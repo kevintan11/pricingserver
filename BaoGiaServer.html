@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BÁO PHÍ SỬ DỤNG SERVER FISHCM - UCSD</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="styling.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+    
+</head>
+<body>
+
+    <label class="title"><h4>BÁO GIÁ SERVER - FISHCM</h4></label>
+    <br>
+    
+
+        <div class="tab tab-2">
+            <div class="Input_Container">
+
+            <div class="VMName">
+                <label> Virtual Machine Name :</label><br>
+                <input type="text" name ="VMName" id="VMName">
+            </div>
+
+            <div class="OS">
+              <label>Operating System:</label><br>
+              <input type="text" name ="OS" id ="OS" placeholder="">
+            </div>
+
+            <div class="VCPU">
+             <label>VCPU:</label><br>
+             <input type ="text" name =" VCPU" id ="VCPU"  size="4"> <input type="text" name="corep" id="corep" value ="64200" size="4" style="text-align:center;" > đ/core
+            </div>
+
+            <div class ="RAM">
+             <label> RAM:</label><br>
+             <input type ="text" name =" RAM" id ="RAM"  size="4"> <input type="text" name="ramp" id="ramp" value ="66000" size="4" style="text-align:center;"> đ/gb
+            </div>
+            
+            <div class ="storagetype">
+             <label>STORAGE TYPE:</label><br>
+             <select id ="st" onclick="showhidetextvalue();">
+               <option></option>
+               <option value = "SSD">SSD</option>
+               <option value = "HDD">HDD</option>
+               <option value = "SSD+HDD">SSD+HDD</option>
+             </select>
+            </div>
+
+            <div class="SSD">
+             <label> SSD: </label> <input type="text" name="ssdp" id="ssdp" value="3000" size="1" style="text-align:center;"> đ/gb<br>
+             <input type ="text" name ="SSD" id ="SSD" style="display: none;"> 
+            </div>
+
+            <div class="HDD">
+             <label> HDD:</label> <input type="text" name="hddp" id="hddp" value="2000" size="1" style="text-align:center;"> đ/gb<br>
+             <input type ="text" name ="HDD" id ="HDD" style="display: none;"> 
+            </div>
+
+            <div class="">
+              <label>Location:</label><br>
+              <select id ="location"  onclick=" LocationSelect()">
+                <option></option>
+                <option value = "SSD">UCSD-HN</option>
+                <option value = "HDD">KeangNam-HN</option>
+                <option value = "SSD+HDD">Lab-TT3-HCM</option>
+                <option value = "SSD+HDD">FISHCM-DC-HCM</option>
+              </select>
+             </div>
+             
+             <div class ="2">
+              <input type="text" name="Duration" id="location2" size="15" >
+          </div>
+
+            <div class="DS">
+             <label>Date start:</label><br>
+             <input type="Date" name="DateStart" min="2020-01-01" max="2030-12-31" id="DateStart" placeholder="dd/mm/yyyy">
+            </div>
+
+            <div class="DE">
+             <label>Date end:</label><br>
+             <input type="Date" name="DateEnd"  min="2020-01-01" max="2030-12-31" id="DateEnd">
+            </div>
+
+
+            <div class ="Dur">
+                
+                <input type="text" name="Duration" style="display: none;" id="Duration" readonly >
+            </div>
+
+            <div class="Cost-1">
+             
+                <input type="text" name="Cost" id="Cost" readonly style="display: none;">
+            </div>
+
+            <div class="CostPerDay">
+              
+                <input type="number" name="CostPerDay" id="CostPerDay"  readonly style="display: none;">
+            </div>
+
+            <div class="CostPerHour">
+              
+              <input type="number" name="CostPerHour" id="CostPerHour"  readonly style="display: none;">
+          </div>
+            </div>
+           
+        </div>
+        
+
+        <div class="tableinput">
+          
+          VCPU: <input class="vcpup" type="text" id="corep2" value="64200" size="4" style="text-align:center;">  
+          RAM: <input type="text" id="ramp2" value="66000" size="4" style="text-align:center;"> 
+          SSD: <input type="text" id="ssdp2" value="3000"  size="4" style="text-align:center;"> 
+          HDD: <input type="text" id="hddp2" value="2000" size="4" style="text-align:center;"> </div>
+          
+          <div class="Show_Save_Container">
+          <button onclick="showinputvalue();"> Show Last Input Value</button>
+          <button onclick="savelocalstoragedata();"> Save Input Value</button>
+          
+          </div>
+        
+         
+        
+        
+        
+
+        <div class="Files_Container">
+        <input type="file" name="file" id="fileUpload" size="5" />
+        <input type="button" name="upload" id="upload" value="Upload excel file" onclick="UploadExcel();" /></div>
+
+        
+        
+        
+        
+
+          
+        <div class="list"  id="dvExcel">
+          <div class="Table_Container">
+      <table id="pricetable", border="3" style="text-align: center;">
+               
+                 <tr>
+
+                  <td style= "height:50px; width:200px; font-weight: bold;"; >Virtual_Machine_Name</td>
+
+                  <td style="width:100px; font-weight: bold;">VCPU_core</td>
+
+                  <td style="width:100px; font-weight: bold;">RAM_GB</td>
+
+                  <td style="width:100px; font-weight: bold;">SSD_GB</td>
+
+                  <td style="width:100px; font-weight: bold;">HDD_GB</td>
+
+                  <td style="width:100px; font-weight: bold;">Date_Start</td>
+
+                  <td style="width:100px; font-weight: bold;">Date_End</td>
+
+                  <td style="width:100px; font-weight: bold;">Duration</td>
+
+                  <td style="width:130px; font-weight: bold;" >Cost</td>
+
+                  <td style="width:130px; font-weight: bold;">Cost_per_day</td>
+
+                  <td style="width:130px; font-weight: bold;">Cost_per_hour</td>
+
+                  <td style="width:180px; font-weight: bold;">OS</td>
+
+                  <td style="width:180px; font-weight: bold;">Location</td>
+                 
+                </tr>
+               
+                <tr border="3">
+                  <td id="totalcost" colspan="13" style="height:30px;font-weight: bold" ></td>
+                </tr>
+
+          </table>
+        </div>
+        </div>
+
+        <div class="Cal_Edit_Tab_Container">
+          <button class="calculate" onclick="calc(); addHtmlTableRow();aftersubmit();tablecalulation();tablecostsum();convertnumber()">Add Virtual Machine</button>
+          <button class="edit" onclick="calc(); editHtmlTbleSelectedRow();aftersubmit();convertnumber()">Edit Information</button>
+            </div>
+            
+            <form action= "Chart.html" method="post">
+              <input type="submit" onclick="setDataToLocalStorage();readData() ">
+            </form>
+    
+
+
+       
+    
+   <script src="main.js"></script>
+   <script src="uploadexcel.js"></script>
+   <script src="savinginputvalue.js"></script>
+   <script src="DrawChart.js"></script>
+   <script src="exportcsvfile.js"></script>
+  
+   
+</body>
+
+</html>

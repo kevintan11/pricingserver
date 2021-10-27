@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"> 
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
+    
+
+<body>
+    
+
+  <div class="tab tab-2">
+    <label class="title"><h4>Info</h4></label>
+
+    <table id="contenttable" style="width:50%">
+
+    </table>
+  </div>
+
+    <div class="piechart" >
+    <canvas id="CostChart" width=360; height=245></canvas>
+   </div>
+ 
+
+    <div class="piechart2" >
+    <canvas id="CostPerHourChart" width=360; height=245></canvas>
+  </div>
+
+    <div class="piechart3">
+    <canvas id="OSChart" width=360; height=245>OS CHART</canvas>
+  </div>
+
+    <div class="piechart4"  >
+    <canvas id="LocationChart" width=360; height=245>Location CHART</canvas>
+  </div>
+
+    <button onclick="readData()">Chartt</button>
+        
+
+     
+        
+    <script>
+      const saveData = window.localStorage.getItem("saveData");
+      if(saveData){
+        const renderData = JSON.parse(saveData);
+        var createElementWithTag = function(value,tagLabel) {
+        var tag = document.createElement(tagLabel);
+        tag.appendChild(document.createTextNode(value));
+        return tag;
+        }
+        var table = document.getElementById('contenttable');
+        var trHeader = document.createElement('tr');
+
+        trHeader.appendChild(createElementWithTag("VMName","th"));
+        trHeader.appendChild(createElementWithTag("VCPU","th"));
+        trHeader.appendChild(createElementWithTag("RAM","th"));
+        trHeader.appendChild(createElementWithTag("SSD","th"));
+        trHeader.appendChild(createElementWithTag("HDD","th"));
+        trHeader.appendChild(createElementWithTag("DateStart","th"));
+        trHeader.appendChild(createElementWithTag("DateEnd","th"));
+        trHeader.appendChild(createElementWithTag("Duration","th"));
+        trHeader.appendChild(createElementWithTag("Cost","th"));
+        trHeader.appendChild(createElementWithTag("CostPerDay","th"));
+        trHeader.appendChild(createElementWithTag("CostPerHour","th"));
+        trHeader.appendChild(createElementWithTag("OS","th"));
+        trHeader.appendChild(createElementWithTag("Loca","th"));
+
+        table.appendChild(trHeader);
+        renderData.forEach(element => {
+          var trBody = document.createElement('tr');
+
+          trBody.appendChild(createElementWithTag(element.VMName,"td"));
+          trBody.appendChild(createElementWithTag(element.VCPU,"td"));
+          trBody.appendChild(createElementWithTag(element.RAM,"td"));
+          trBody.appendChild(createElementWithTag(element.SSD,"td"));
+          trBody.appendChild(createElementWithTag(element.HDD,"td"));
+          trBody.appendChild(createElementWithTag(element.DateStart,"td"));
+          trBody.appendChild(createElementWithTag(element.DateEnd,"td"));
+          trBody.appendChild(createElementWithTag(element.Duration,"td"));
+          trBody.appendChild(createElementWithTag(element.Cost,"td"));
+          trBody.appendChild(createElementWithTag(element.CostPerDay,"td"));
+          trBody.appendChild(createElementWithTag(element.CostPerHour,"td"));
+          trBody.appendChild(createElementWithTag(element.OS,"td"));
+          trBody.appendChild(createElementWithTag(element.Loca,"td"));
+
+          table.appendChild(trBody);
+        });
+
+      }
+    </script>
+  
+</script>
+<script src="DrawChart.js"></script>
+
+</body>
+</html>

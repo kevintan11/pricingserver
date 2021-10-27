@@ -1,0 +1,128 @@
+/* Orgin */
+.tab {
+    float: left;
+    margin-right: 40px;
+    /*margin-top: -30pxp;*/}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    background-color: gray;}
+
+/* Title+ round corners */
+label.title{
+    margin-left: 750px;
+    margin-top: 10px;}
+
+
+#VMName{ border-radius: 20px;}
+#OS{ border-radius: 20px;}
+
+
+/* Table CSS+hover */
+table#pricetable {
+    background-color: bisque;}
+
+/*div.totalresult{
+    margin-top:210px;
+    margin-left:1200px}*/
+
+
+button:hover{
+    background-color: white;}
+
+input:hover{
+    background-color: white;}
+
+tr:hover {background-color: yellow;}
+
+tr{cursor: pointer; transition: all .25s ease-in-out}
+.selected{background-color: yellow; font-weight: normal; color: black;}
+
+
+
+
+/* Table input CSS */
+.tableinput {
+    margin-left: 550px;
+    margin-top: -10px;}
+
+
+/* Autocomplete CSS */
+.OS {
+      position: relative;
+      display: inline-block;
+      box-sizing: border-box;}
+
+.autocomplete-items div {
+      padding: 10px;
+      border: 1px solid ;
+      border-bottom: 1px solid ;
+      background-color: white;}
+
+
+/* Flex Box */
+
+.Input_Container{
+    width: 20vw;
+    height: 100vh;
+    display: flex;
+    flex-flow: column wrap;
+    float: left;
+    align-content: space-between;
+    margin-top: 110px;
+    justify-content: space-evenly;
+    margin-top:-10px;
+    margin-left:20px;}
+
+
+.Show_Save_Container {
+        width: 50vw;
+        height: 30vh;
+        display: flex;
+        flex-flow: column wrap;
+        margin-top: -80px;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-content: space-around;
+        margin-left: 660px;
+    }
+
+
+
+
+.Files_Container {
+        width: 20vw;
+        height: 20vh;
+        display: flex;
+        align-content: space-between;
+        margin-top: -160px;
+        justify-content: space-evenly;
+        margin-left: 1100px;
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+.Table_Container {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-flow: column wrap;
+        align-content: space-between;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        /* margin-top: -300px; */
+        margin-bottom: -230px;
+    }
+
+
+    .Cal_Edit_Tab_Container {
+        margin-top: 230px;
+        margin-left: 700px;
+    }
+
+
+
